@@ -1,0 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/21 15:40:09 by mleonet           #+#    #+#             */
+/*   Updated: 2023/11/23 17:27:05 by mleonet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+int	main(int argc, char **argv)
+{
+	t_data	data;
+
+	if (argc != 2)
+		ft_error("Error: Wrong Number Of Arguments\n");
+	ft_init_data(&data);
+	ft_check_map(&data, argv);
+	ft_init_window(&data);
+	ft_init_images(&data);
+	ft_init_map_data(&data);
+	ft_set_image(&data);
+	mlx_hook(data.window->win, 2, 0, ft_keypress, &data);
+	mlx_hook(data.window->win, 17, 0, ft_exit, &data);
+	mlx_loop(data.window->mlx);
+	return (0);
+}
