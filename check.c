@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:01:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/08 22:05:17 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/09 00:04:27 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,9 @@ void	ft_check_file(t_data *data, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-	{
-		ft_printf("Error: Wrong Map Path\n");
-		exit(EXIT_FAILURE);
-	}
+		ft_error("Error: Opening File Failed\n", data);
 	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
-	{
-		ft_printf("Error: Wrong Map Name\n");
-		exit(EXIT_FAILURE);
-	}
+		ft_error("Error: Wrong Map Extension\n", data);
 	ft_map_to_tab(data, fd);
 	close(fd);
 }
