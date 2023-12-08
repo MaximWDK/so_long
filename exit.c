@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:20 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/08 23:50:00 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/09 00:07:48 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ void	ft_error(char *str, t_data *data)
 	exit(EXIT_SUCCESS);
 }
 
-void ft_free_tab(char **tab)
+void	ft_free_tab(char **tab)
 {
-    if (!tab)
-        return;
+	int	i;
 
-    int i = -1;
-    while (tab[++i])
-        free(tab[i]);
-    free(tab);
+	if (!tab)
+		return ;
+	i = -1;
+	while (tab[++i])
+		free(tab[i]);
+	free(tab);
 }
