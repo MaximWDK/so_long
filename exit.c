@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:20 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/08 23:16:21 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/08 23:50:00 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void	ft_game_over(t_data *data)
 void	ft_error(char *str, t_data *data)
 {
 	ft_printf("%s", str);
+	if (data->map->map)
+		ft_free_tab(data->map->map);
+	if (data->check->map)
+		ft_free_tab(data->check->map);
 	if (data->read)
 		free(data->read);
 	if (data->img)

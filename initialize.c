@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:42:10 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/08 22:02:15 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/08 23:49:11 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_init_data(t_data *data)
 	data->check = malloc(sizeof(t_check));
 	if (!data->map || !data->img || !data->window || !data->check)
 		ft_error("Error: Initializing Data Failed\n", data);
+	data->check->map = NULL;
 	data->count_moves = 0;
 	data->is_exit_open = 0;
 	data->count_collect = 0;
