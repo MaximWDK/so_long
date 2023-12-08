@@ -1,15 +1,15 @@
-SRCS = main.c \
-initialize.c \
-map.c \
-moves.c \
-set_images.c \
-update_images.c \
-utils.c \
-exit.c \
-ft_printf/ft_printf.c \
-ft_printf/ft_printf_utils.c \
-gnl/get_next_line.c \
-gnl/get_next_line_utils.c \
+SRCS =  main.c \
+		initialize.c \
+		map.c \
+		moves.c \
+		set_images.c \
+		utils.c \
+		check.c \
+		exit.c \
+		ft_printf/ft_printf.c \
+		ft_printf/ft_printf_utils.c \
+		gnl/get_next_line.c \
+		gnl/get_next_line_utils.c \
 
 NAME = so_long
 OBJ = ${SRCS:.c=.o}

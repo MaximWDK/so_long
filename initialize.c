@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:42:10 by mleonet           #+#    #+#             */
-/*   Updated: 2023/11/23 17:36:35 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/08 15:06:21 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,39 +54,16 @@ void	ft_init_images(t_data *data)
 		ft_error("Error: Intializing Images Failed\n");
 }
 
-void	ft_init_map_data(t_data *data)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	y = 0;
-	data->count_collect = 0;
-	data->count_moves = 0;
-	data->is_exit_open = 0;
-	while (data->map->map[y])
-	{
-		x = 0;
-		while (data->map->map[y][x])
-		{
-			if (data->map->map[y][x] == 'C')
-				data->count_collect++;
-			else if (data->map->map[y][x] == 'P')
-			{
-				data->x_player = x;
-				data->y_player = y;
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
 void	ft_init_data(t_data *data)
 {
 	data->map = malloc(sizeof(t_map));
 	data->img = malloc(sizeof(t_img));
 	data->window = malloc(sizeof(t_window));
-	if (!data->map || !data->img || !data->window)
+	data->check = malloc(sizeof(t_check));
+	if (!data->map || !data->img || !data->window || !data->check)
 		ft_error("Error: Initializing Data Failed\n");
+	data->count_moves = 0;
+	data->is_exit_open = 0;
+	data->check->count_collect = 0;
+	data->check->count_exit = 0;
 }

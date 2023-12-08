@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:38:40 by mleonet           #+#    #+#             */
-/*   Updated: 2023/11/23 17:36:44 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/08 18:01:09 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ typedef struct s_map
 	int		height;
 }				t_map;
 
+typedef struct s_check
+{
+	char	**map;
+
+	int		count_collect;
+	int		count_exit;
+}				t_check;
+
 typedef struct s_img
 {
 	void	*player;
@@ -64,20 +72,17 @@ typedef struct s_data
 	t_window	*window;
 	t_map		*map;
 	t_img		*img;
+	t_check		*check;
 }				t_data;
 
 // initialize.c
 void	ft_init_window(t_data *data);
 void	ft_init_images(t_data *data);
-void	ft_init_map_data(t_data *data);
 void	ft_init_data(t_data *data);
-
 
 // set_images.c
 void	ft_set_image(t_data *data);
 void	ft_set_sprite(t_data *data, int x, int y);
-
-// update_images.c
 void	ft_update_image(t_data *data);
 void	ft_update_sprite(t_data *data, int x, int y);
 
@@ -89,16 +94,28 @@ void	ft_move_right(t_data *data);
 int		ft_keypress(int keycode, t_data *data);
 
 // map.c
-void	ft_check_map(t_data *data, char **argv);
-void	ft_map_to_tab(t_data *data, int fd);
+void	ft_check_map_path(t_data *data);
+void	ft_check_is_perfect_rectangle(t_data *data);
+int		ft_strlen_check_blanks(char *str);
+void	ft_check_minimum_requirements(t_data *data);
+void	ft_backtracking(t_data *data, int x, int y);
 
 // utils.c
+
+void	ft_map_to_tab(t_data *data, int fd);
+char	**ft_arraycopy(char **map);
+void	ft_algo(t_data *data);
+size_t	ft_count_rows(char **map);
 int		ft_is_valid_move(t_data *data, int x, int y);
+
+// check.c
+void	ft_check_file(t_data *data, char **argv);
+void	ft_check_end(t_data *data);
 void	ft_check_win(t_data *data, int x, int y);
-void	ft_game_over(t_data *data);
 
 // exit.c
 int		ft_exit(t_data *data);
 void	ft_error(char *str);
+void	ft_game_over(t_data *data);
 
 #endif

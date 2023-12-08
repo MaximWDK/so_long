@@ -6,55 +6,130 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 16:50:54 by mleonet           #+#    #+#             */
-/*   Updated: 2023/11/23 17:36:39 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:58:25 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_check_map(t_data *data, char **argv)
+void	ft_check_map_path(t_data *data)
 {
-	int	fd;
+	int	i;
+	int	j;
 
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
+	i = -1;
+	while (++i < (data->map->height / 32))
 	{
-		ft_printf("Error: Wrong Map Path\n");
-		exit(EXIT_FAILURE);
+		j = -1;
+		while (++j < (data->map->width / 32))
+		{
+			ft_strlen_check_blanks(data->map->map[i]);
+			if (i == 0 || i == (data->map->height - 1) / 32)
+			{
+				if (data->map->map[i][j] != '1')
+					ft_error("Error: Map is not surrounded by walls\n");
+			}
+			else if (j == 0 || j == (data->map->width - 1) / 32)
+			{
+				if (data->map->map[i][j] != '1')
+					ft_error("Error: Map is not surrounded by walls\n");
+			}
+		}
 	}
-	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
-	{
-		ft_printf("Error: Wrong Map Name\n");
-		exit(EXIT_FAILURE);
-	}
-	ft_map_to_tab(data, fd);
-	close(fd);
+	ft_check_is_perfect_rectangle(data);
+	ft_check_minimum_requirements(data);
 }
 
-void	ft_map_to_tab(t_data *data, int fd)
+void	ft_check_is_perfect_rectangle(t_data *data)
 {
-	char	*final;
-	char	*temp;
 	int		i;
+	int		j;
 
 	i = 0;
-	final = NULL;
-	temp = get_next_line(fd);
-	if (!temp)
-		ft_error("Error: Empty file\n");
-	final = ft_strdup(temp);
-	while (temp)
+	while (i < (data->map->height / 32))
 	{
+		j = 0;
+		while (j < (data->map->width / 32))
+		{
+			if (ft_strlen_check_blanks(data->map->map[i])
+				!= data->map->width / 32)
+				ft_error("Error: Map is not a perfect rectangle\n");
+			if (data->map->map[i][j] != '1' && data->map->map[i][j] != '0'
+				&& data->map->map[i][j] != 'C' && data->map->map[i][j] != 'E'
+				&& data->map->map[i][j] != 'P')
+				ft_error("Error: Map contains invalid characters\n");
+			if (data->map->map[i][j] == 'P')
+			{
+				data->x_player = j;
+				data->y_player = i;
+			}
+			j++;
+		}
 		i++;
-		free(temp);
-		temp = get_next_line(fd);
-		if (temp)
-			final = ft_strjoin(final, temp);
 	}
-	data->map->map = ft_split(final, '\n');
-	free(final);
-	if (!data->map->map)
-		ft_error("Error: Creating Map Failed\n");
-	data->map->width = ft_strlen(data->map->map[0]) * 32;
-	data->map->height = i * 32;
+}
+
+int	ft_strlen_check_blanks(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		ft_error("Error: Map has blank lines\n");
+	while (str[i])
+		i++;
+	return (i);
+}
+
+void	ft_check_minimum_requirements(t_data *data)
+{
+	int	i;
+	int	j;
+	int	count_exit;
+	int	count_start;
+
+	i = -1;
+	count_exit = 0;
+	count_start = 0;
+	while (++i < (data->map->height / 32))
+	{
+		j = -1;
+		while (++j < (data->map->width / 32))
+		{
+			if (data->map->map[i][j] == 'C')
+				data->count_collect++;
+			if (data->map->map[i][j] == 'E')
+				count_exit++;
+			if (data->map->map[i][j] == 'P')
+				count_start++;
+		}
+	}
+	if (data->count_collect <= 0 || count_exit != 1 || count_start != 1)
+		ft_error("Error: Map does not respects requirements\n");
+	data->check->map = ft_arraycopy(data->map->map);
+	ft_algo(data);
+}
+
+void	ft_backtracking(t_data *data, int x, int y)
+{
+	if (data->check->map[y][x] == 'P')
+		data->check->map[y][x] = '0';
+	if (data->check->map[y][x] == 'C')
+	{
+		data->check->count_collect++;
+		data->check->map[y][x] = '0';
+	}
+	if (data->check->map[y][x] == 'E')
+	{
+		data->check->count_exit++;
+		data->check->map[y][x] = '1';
+	}
+	if (data->check->map[y][x] == '0')
+	{
+		data->check->map[y][x] = 'X';
+		ft_backtracking(data, x - 1, y);
+		ft_backtracking(data, x, y - 1);
+		ft_backtracking(data, x + 1, y);
+		ft_backtracking(data, x, y + 1);
+	}
 }

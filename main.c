@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:40:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/11/23 17:36:37 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/08 17:26:00 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		ft_error("Error: Wrong Number Of Arguments\n");
 	ft_init_data(&data);
-	ft_check_map(&data, argv);
+	ft_check_file(&data, argv);
+	ft_check_map_path(&data);
 	ft_init_window(&data);
 	ft_init_images(&data);
-	ft_init_map_data(&data);
 	ft_set_image(&data);
 	mlx_hook(data.window->win, 2, 0, ft_keypress, &data);
 	mlx_hook(data.window->win, 17, 0, ft_exit, &data);
