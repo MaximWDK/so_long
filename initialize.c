@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:42:10 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/08 15:06:21 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/08 22:02:15 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_init_window(t_data *data)
 {
 	data->window->mlx = mlx_init();
 	if (!data->window->mlx)
-		ft_error("Error: Initializing MiniLibX Failed\n");
+		ft_error("Error: Initializing MiniLibX Failed\n", data);
 	data->window->win = mlx_new_window(data->window->mlx,
 			data->map->width, data->map->height, "So_Long");
 	if (!data->window->win)
@@ -24,7 +24,7 @@ void	ft_init_window(t_data *data)
 		free(data->map);
 		free(data->img);
 		free(data->window);
-		ft_error("Error: Initializing Window Failed\n");
+		ft_error("Error: Initializing Window Failed\n", data);
 	}
 }
 
@@ -51,7 +51,7 @@ void	ft_init_images(t_data *data)
 	if (!data->img->background || !data->img->wall || !data->img->collectible
 		|| !data->img->exit_close || !data->img->exit_open
 		|| !data->img->player)
-		ft_error("Error: Intializing Images Failed\n");
+		ft_error("Error: Intializing Images Failed\n", data);
 }
 
 void	ft_init_data(t_data *data)
@@ -61,9 +61,10 @@ void	ft_init_data(t_data *data)
 	data->window = malloc(sizeof(t_window));
 	data->check = malloc(sizeof(t_check));
 	if (!data->map || !data->img || !data->window || !data->check)
-		ft_error("Error: Initializing Data Failed\n");
+		ft_error("Error: Initializing Data Failed\n", data);
 	data->count_moves = 0;
 	data->is_exit_open = 0;
+	data->count_collect = 0;
 	data->check->count_collect = 0;
 	data->check->count_exit = 0;
 }

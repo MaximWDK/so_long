@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 16:50:54 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/08 17:58:25 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/08 22:05:05 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ void	ft_check_map_path(t_data *data)
 		j = -1;
 		while (++j < (data->map->width / 32))
 		{
-			ft_strlen_check_blanks(data->map->map[i]);
+			ft_strlen_check_blanks(data->map->map[i], data);
 			if (i == 0 || i == (data->map->height - 1) / 32)
 			{
 				if (data->map->map[i][j] != '1')
-					ft_error("Error: Map is not surrounded by walls\n");
+					ft_error("Error: Map is not surrounded by walls\n", data);
 			}
 			else if (j == 0 || j == (data->map->width - 1) / 32)
 			{
 				if (data->map->map[i][j] != '1')
-					ft_error("Error: Map is not surrounded by walls\n");
+					ft_error("Error: Map is not surrounded by walls\n", data);
 			}
 		}
 	}
@@ -51,13 +51,13 @@ void	ft_check_is_perfect_rectangle(t_data *data)
 		j = 0;
 		while (j < (data->map->width / 32))
 		{
-			if (ft_strlen_check_blanks(data->map->map[i])
+			if (ft_strlen_check_blanks(data->map->map[i], data)
 				!= data->map->width / 32)
-				ft_error("Error: Map is not a perfect rectangle\n");
+				ft_error("Error: Map is not a perfect rectangle\n", data);
 			if (data->map->map[i][j] != '1' && data->map->map[i][j] != '0'
 				&& data->map->map[i][j] != 'C' && data->map->map[i][j] != 'E'
 				&& data->map->map[i][j] != 'P')
-				ft_error("Error: Map contains invalid characters\n");
+				ft_error("Error: Map contains invalid characters\n", data);
 			if (data->map->map[i][j] == 'P')
 			{
 				data->x_player = j;
@@ -69,13 +69,13 @@ void	ft_check_is_perfect_rectangle(t_data *data)
 	}
 }
 
-int	ft_strlen_check_blanks(char *str)
+int	ft_strlen_check_blanks(char *str, t_data *data)
 {
 	int	i;
 
 	i = 0;
 	if (!str)
-		ft_error("Error: Map has blank lines\n");
+		ft_error("Error: Map has blank lines\n", data);
 	while (str[i])
 		i++;
 	return (i);
@@ -105,8 +105,8 @@ void	ft_check_minimum_requirements(t_data *data)
 		}
 	}
 	if (data->count_collect <= 0 || count_exit != 1 || count_start != 1)
-		ft_error("Error: Map does not respects requirements\n");
-	data->check->map = ft_arraycopy(data->map->map);
+		ft_error("Error: Map does not respects requirements\n", data);
+	data->check->map = ft_arraycopy(data->map->map, data);
 	ft_algo(data);
 }
 

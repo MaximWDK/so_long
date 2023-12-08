@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:01:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/08 18:00:26 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/08 22:05:17 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_check_end(t_data *data)
 {
 	if (data->check->count_collect != data->count_collect
 		|| data->check->count_exit != 1)
-		ft_error("Error: Map can't be completed\n");
+		ft_error("Error: Map can't be completed\n", data);
 }
 
 void	ft_check_win(t_data *data, int x, int y)
