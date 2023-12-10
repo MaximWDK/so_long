@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:16 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 00:45:15 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 00:48:12 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,6 @@ int	ft_keypress(int keycode, t_data *data)
 	if (keycode == KEY_D)
 		ft_move_right(data);
 	if (data->is_touched == 1)
-		ft_exit(data);
+		ft_game_over(data, 1);
 	return (0);
 }
