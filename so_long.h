@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:38:40 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/08 22:30:24 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 00:09:54 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_img
 	void	*background;
 	void	*wall;
 	void	*collectible;
+	void	*enemy;
 	void	*exit_open;
 	void	*exit_close;
 	int		width_img;
@@ -69,6 +70,7 @@ typedef struct s_data
 	int			count_collect;
 	int			count_moves;
 	int			is_exit_open;
+	int			is_touched;
 	char		*temp;
 	char		*temp2;
 	char		*read;
@@ -119,7 +121,7 @@ void	ft_check_win(t_data *data, int x, int y);
 // exit.c
 int		ft_exit(t_data *data);
 void	ft_error(char *str, t_data *data);
-void	ft_game_over(t_data *data);
+void	ft_game_over(t_data *data, int i);
 void	ft_free_tab(char **tab);
 
 #endif

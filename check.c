@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:01:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/09 00:04:27 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/10 23:03:24 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void	ft_check_end(t_data *data)
 void	ft_check_win(t_data *data, int x, int y)
 {
 	if (data->count_collect == 0 && data->map->map[y][x] == 'E')
-		ft_game_over(data);
+		ft_game_over(data, 0);
 }

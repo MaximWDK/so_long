@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:20 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/09 00:07:48 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/10 23:03:39 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_exit(t_data *data)
 	exit(EXIT_SUCCESS);
 }
 
-void	ft_game_over(t_data *data)
+void	ft_game_over(t_data *data, int i)
 {
 	mlx_destroy_window(data->window->mlx, data->window->win);
 	ft_free_tab(data->map->map);
@@ -33,7 +33,10 @@ void	ft_game_over(t_data *data)
 	free(data->img);
 	free(data->window);
 	free(data->check);
-	ft_printf("You won!\n");
+	if (i == 1)
+		ft_printf("You lost!\n");
+	else
+		ft_printf("You won!\n");
 	exit(EXIT_SUCCESS);
 }
 
