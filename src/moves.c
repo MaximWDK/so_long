@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:16 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 10:50:27 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 11:59:06 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_move_down(t_data *data)
 			data->map->map[new_y][new_x] = '0';
 			data->count_collect--;
 		}
-
 		data->map->map[new_y][new_x] = 'P';
 		ft_update_image(data);
 		data->y_player = new_y;
