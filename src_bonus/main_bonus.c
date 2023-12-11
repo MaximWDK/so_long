@@ -6,11 +6,21 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:40:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 10:46:21 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:45:01 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+static int	animation(t_data *data)
+{
+	ft_update_image(data);
+	if (data->collectible_type == 80)
+		data->collectible_type = 0;
+	else
+		data->collectible_type++;
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -26,6 +36,7 @@ int	main(int argc, char **argv)
 	ft_set_image(&data);
 	mlx_hook(data.window->win, 2, 0, ft_keypress, &data);
 	mlx_hook(data.window->win, 17, 0, ft_exit, &data);
+	mlx_loop_hook(data.window->mlx, &animation, &data);
 	mlx_loop(data.window->mlx);
 	return (0);
 }

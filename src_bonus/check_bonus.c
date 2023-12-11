@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:01:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 15:53:56 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:46:54 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_change_collectible(t_data *data, int x, int y)
 {
 	mlx_put_image_to_window(data->window->mlx,
 		data->window->win, data->img->background, x * 32, y * 32);
-	if (data->collectible_type == 0)
+	if (data->collectible_type < 40)
 		mlx_put_image_to_window(data->window->mlx,
 			data->window->win, data->img->collectible2, x * 32, y * 32);
 	else
