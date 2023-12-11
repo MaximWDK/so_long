@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:45:40 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 10:59:45 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 13:09:58 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ void	ft_update_score(t_data *data)
 	int		i;
 
 	i = -1;
+	if (data->count_moves >= 2147483647)
+		data->count_moves = 2147483646;
 	score = ft_itoa(data->count_moves);
 	while (++i < data->map->width / 32)
 	{
