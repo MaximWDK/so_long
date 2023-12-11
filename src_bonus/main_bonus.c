@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:40:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 16:49:24 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 18:22:53 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 
 	ft_init_data(&data);
 	if (argc != 2)
-		ft_error("Error: Wrong Number Of Arguments\n", &data);
+		ft_error("Error\nWrong Number Of Arguments\n", &data);
 	ft_check_file(&data, argv);
 	ft_check_map_path(&data);
 	ft_init_window(&data);

@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:01:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 16:49:50 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 18:22:21 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	ft_check_file(t_data *data, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		ft_error("Error: Opening File Failed\n", data);
+		ft_error("Error\nOpening File Failed\n", data);
 	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4) != 0)
-		ft_error("Error: Wrong Map Extension\n", data);
+		ft_error("Error\nWrong Map Extension\n", data);
 	ft_map_to_tab(data, fd);
 	close(fd);
 }
@@ -29,7 +29,7 @@ void	ft_check_end(t_data *data)
 {
 	if (data->check->count_collect != data->count_collect
 		|| data->check->count_exit != 1)
-		ft_error("Error: Map can't be completed\n", data);
+		ft_error("Error\nMap can't be completed\n", data);
 }
 
 void	ft_check_win(t_data *data, int x, int y)
@@ -55,5 +55,5 @@ void	ft_check_data(t_data *data)
 	if (!data->img->background || !data->img->wall || !data->img->collectible
 		|| !data->img->exit_close || !data->img->exit_open
 		|| !data->img->player || !data->img->enemy || !data->img->collectible2)
-		ft_error("Error: Intializing Images Failed\n", data);
+		ft_error("Error\nIntializing Images Failed\n", data);
 }
