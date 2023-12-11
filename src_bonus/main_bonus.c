@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:40:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 16:45:01 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:49:24 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	animation(t_data *data)
 {
 	ft_update_image(data);
-	if (data->collectible_type == 80)
+	if (data->collectible_type == 100)
 		data->collectible_type = 0;
 	else
 		data->collectible_type++;
