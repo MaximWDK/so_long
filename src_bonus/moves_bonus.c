@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:16 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 11:22:46 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:44:28 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void	ft_move_up(t_data *data)
 			data->is_touched = 1;
 		data->map->map[new_y][new_x] = 'P';
 		ft_update_image(data);
+		if (data->collectible_type == 0)
+			data->collectible_type = 1;
+		else
+			data->collectible_type = 0;
 		data->y_player = new_y;
 	}
 }
@@ -58,6 +62,10 @@ void	ft_move_down(t_data *data)
 			data->is_touched = 1;
 		data->map->map[new_y][new_x] = 'P';
 		ft_update_image(data);
+		if (data->collectible_type == 0)
+			data->collectible_type = 1;
+		else
+			data->collectible_type = 0;
 		data->y_player = new_y;
 	}
 }
@@ -83,6 +91,10 @@ void	ft_move_left(t_data *data)
 			data->is_touched = 1;
 		data->map->map[new_y][new_x] = 'P';
 		ft_update_image(data);
+		if (data->collectible_type == 0)
+			data->collectible_type = 1;
+		else
+			data->collectible_type = 0;
 		data->x_player = new_x;
 	}
 }
@@ -108,6 +120,10 @@ void	ft_move_right(t_data *data)
 			data->is_touched = 1;
 		data->map->map[new_y][new_x] = 'P';
 		ft_update_image(data);
+		if (data->collectible_type == 0)
+			data->collectible_type = 1;
+		else
+			data->collectible_type = 0;
 		data->x_player = new_x;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:38:40 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 11:15:38 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:52:19 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_img
 	void	*background;
 	void	*wall;
 	void	*collectible;
+	void	*collectible2;
 	void	*enemy;
 	void	*exit_open;
 	void	*exit_close;
@@ -75,6 +76,7 @@ typedef struct s_data
 	int			count_moves;
 	int			is_exit_open;
 	int			is_touched;
+	int			collectible_type;
 	char		*temp;
 	char		*temp2;
 	char		*read;
@@ -122,6 +124,8 @@ int		ft_is_valid_move(t_data *data, int x, int y);
 void	ft_check_file(t_data *data, char **argv);
 void	ft_check_end(t_data *data);
 void	ft_check_win(t_data *data, int x, int y);
+void	ft_change_collectible(t_data *data, int x, int y);
+void	ft_check_data(t_data *data);
 
 // exit.c
 int		ft_exit(t_data *data);

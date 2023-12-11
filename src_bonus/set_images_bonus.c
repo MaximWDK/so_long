@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:45:40 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 13:09:58 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:50:10 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,12 @@ void	ft_set_image(t_data *data)
 	int	x;
 	int	y;
 
-	x = 0;
-	y = 0;
-	while (x < (data->map->height) / 32)
+	x = -1;
+	while (++x < (data->map->height) / 32)
 	{
-		y = 0;
-		while (y < (data->map->width) / 32)
-		{
+		y = -1;
+		while (++y < (data->map->width) / 32)
 			ft_set_sprite(data, x, y);
-			y++;
-		}
-		x++;
 	}
 	ft_update_score(data);
 }
@@ -62,16 +57,16 @@ void	ft_update_image(t_data *data)
 	int	x;
 	int	y;
 
-	y = 0;
-	while (y < data->map->height / 32)
+	y = -1;
+	while (++y < data->map->height / 32)
 	{
-		x = 0;
-		while (x < data->map->width / 32)
+		x = -1;
+		while (++x < data->map->width / 32)
 		{
 			ft_update_sprite(data, x, y);
-			x++;
+			if (data->map->map[y][x] == 'C')
+				ft_change_collectible(data, x, y);
 		}
-		y++;
 	}
 	ft_update_score(data);
 }

@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 16:01:09 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 10:46:09 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:53:56 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,24 @@ void	ft_check_win(t_data *data, int x, int y)
 {
 	if (data->count_collect == 0 && data->map->map[y][x] == 'E')
 		ft_game_over(data, 0);
+}
+
+void	ft_change_collectible(t_data *data, int x, int y)
+{
+	mlx_put_image_to_window(data->window->mlx,
+		data->window->win, data->img->background, x * 32, y * 32);
+	if (data->collectible_type == 0)
+		mlx_put_image_to_window(data->window->mlx,
+			data->window->win, data->img->collectible2, x * 32, y * 32);
+	else
+		mlx_put_image_to_window(data->window->mlx,
+			data->window->win, data->img->collectible, x * 32, y * 32);
+}
+
+void	ft_check_data(t_data *data)
+{
+	if (!data->img->background || !data->img->wall || !data->img->collectible
+		|| !data->img->exit_close || !data->img->exit_open
+		|| !data->img->player || !data->img->enemy || !data->img->collectible2)
+		ft_error("Error: Intializing Images Failed\n", data);
 }

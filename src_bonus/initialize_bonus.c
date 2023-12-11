@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:42:10 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 10:46:18 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 15:51:11 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ void	ft_init_images(t_data *data)
 	data->img->enemy = mlx_xpm_file_to_image(data->window->mlx,
 			"./images/enemy.xpm",
 			&data->img->width_img, &data->img->height_img);
-	if (!data->img->background || !data->img->wall || !data->img->collectible
-		|| !data->img->exit_close || !data->img->exit_open
-		|| !data->img->player || !data->img->enemy)
-		ft_error("Error: Intializing Images Failed\n", data);
+	data->img->collectible2 = mlx_xpm_file_to_image(data->window->mlx,
+			"./images/collectible2.xpm",
+			&data->img->width_img, &data->img->height_img);
+	ft_check_data(data);
 }
 
 void	ft_init_data(t_data *data)
@@ -74,4 +74,5 @@ void	ft_init_data(t_data *data)
 	data->check->map = NULL;
 	data->read = NULL;
 	data->is_touched = 0;
+	data->collectible_type = 0;
 }
