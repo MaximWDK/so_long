@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 16:50:54 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/10 23:07:39 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 10:56:19 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_check_is_perfect_rectangle(t_data *data)
 				ft_error("Error: Map is not a perfect rectangle\n", data);
 			if (data->map->map[i][j] != '1' && data->map->map[i][j] != '0'
 				&& data->map->map[i][j] != 'C' && data->map->map[i][j] != 'E'
-				&& data->map->map[i][j] != 'P' && data->map->map[i][j] != 'X')
+				&& data->map->map[i][j] != 'P')
 				ft_error("Error: Map contains invalid characters\n", data);
 			if (data->map->map[i][j] == 'P')
 			{
@@ -124,8 +124,6 @@ void	ft_backtracking(t_data *data, int x, int y)
 		data->check->count_exit++;
 		data->check->map[y][x] = '1';
 	}
-	if (data->check->map[y][x] == 'X')
-		data->check->map[y][x] = '1';
 	if (data->check->map[y][x] == '0')
 	{
 		data->check->map[y][x] = 'K';

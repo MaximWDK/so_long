@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:45:40 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 00:33:06 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 10:51:48 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ void	ft_set_sprite(t_data *data, int x, int y)
 	else if (data->map->map[x][y] == 'C')
 		mlx_put_image_to_window(data->window->mlx,
 			data->window->win, data->img->collectible, y * 32, x * 32);
-	else if (data->map->map[x][y] == 'X')
-		mlx_put_image_to_window(data->window->mlx,
-			data->window->win, data->img->enemy, y * 32, x * 32);
 	else if (data->map->map[x][y] == 'E')
 	{
 		mlx_put_image_to_window(data->window->mlx,

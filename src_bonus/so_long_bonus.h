@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:38:40 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 00:09:54 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/11 11:15:38 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdlib.h>
-# include "minilibx/mlx.h"
+# include <mlx.h>
 # include <fcntl.h>
-# include "libft/libft.h"
-# include "ft_printf/ft_printf.h"
-# include "gnl/get_next_line.h"
+# include "../libft/libft.h"
+# include "../ft_printf/ft_printf.h"
+# include "../gnl/get_next_line.h"
 
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_UP 126
+# define KEY_LEFT 123
+# define KEY_DOWN 125
+# define KEY_RIGHT 124
 # define KEY_ESC 53
 
 typedef struct s_window
@@ -90,6 +94,7 @@ void	ft_set_image(t_data *data);
 void	ft_set_sprite(t_data *data, int x, int y);
 void	ft_update_image(t_data *data);
 void	ft_update_sprite(t_data *data, int x, int y);
+void	ft_update_score(t_data *data);
 
 // moves.c
 void	ft_move_up(t_data *data);
