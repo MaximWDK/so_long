@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:38:40 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 15:52:19 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/15 14:45:03 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,6 @@ int		ft_exit(t_data *data);
 void	ft_error(char *str, t_data *data);
 void	ft_game_over(t_data *data, int i);
 void	ft_free_tab(char **tab);
+void	ft_check_size(t_data *data);
 
 #endif

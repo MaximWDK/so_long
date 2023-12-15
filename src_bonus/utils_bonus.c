@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:40:11 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 18:23:53 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/15 14:25:36 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_map_to_tab(t_data *data, int fd)
 		data->map->height++;
 		free(data->read);
 		data->read = get_next_line(fd);
+		ft_check_size(data);
 		if (data->read)
 		{
 			data->temp = data->temp2;

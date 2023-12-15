@@ -6,7 +6,7 @@
 /*   By: mleonet <mleonet@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 14:07:20 by mleonet           #+#    #+#             */
-/*   Updated: 2023/12/11 10:46:16 by mleonet          ###   ########.fr       */
+/*   Updated: 2023/12/15 14:27:20 by mleonet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,11 @@ void	ft_free_tab(char **tab)
 	while (tab[++i])
 		free(tab[i]);
 	free(tab);
+}
+
+void	ft_check_size(t_data *data)
+{
+	if (ft_strlen(data->read) >= 10000
+		|| ft_strlen(data->temp2) >= 10000 || data->map->height >= 10000)
+		ft_error("Error\nMap is too big\n", data);
 }
